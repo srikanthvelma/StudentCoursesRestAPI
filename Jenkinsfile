@@ -1,19 +1,19 @@
-pipeline{
-    agent{ label 'UBUNTU_FLASK' }
-    triggers{ pollSCM('* * * * *') }
-    stages{
-        stage('vcs'){
+pipeline {
+    agent { label 'UBUNTU_FLASK' }
+    triggers { pollSCM('* * * * *') }
+    stages {
+        stage('vcs') {
             steps{
                 git url: 'https://github.com/srikanthvelma/StudentCoursesRestAPI.git',
                     branch: 'develop'
             }
         }
-        stage('build'){
+        stage('build') {
             steps{
                 sh 'docker build image -t srikanthvelma/SCR:latest .'
             }
         }
-        stage('scan and push'){
+        stage('scan and push') {
             steps{
                 sh 'docker push image srikanthvelma/SCR:latest'
                 sh 'docker scan srikanthvelma/SCR'
