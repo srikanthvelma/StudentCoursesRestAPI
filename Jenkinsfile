@@ -10,12 +10,12 @@ pipeline {
         }
         stage('build') {
             steps{
-                sh 'docker build image -t srikanthvelma/SCR:latest .'
+                sh 'docker image build -t srikanthvelma/SCR:latest .'
             }
         }
         stage('scan and push') {
             steps{
-                sh 'docker push image srikanthvelma/SCR:latest'
+                sh 'docker image push srikanthvelma/SCR:latest'
                 sh 'docker scan srikanthvelma/SCR'
             }
         }
