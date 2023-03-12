@@ -5,18 +5,18 @@ pipeline{
         stage('vcs'){
             steps{
                 git url: 'https://github.com/srikanthvelma/StudentCoursesRestAPI.git',
-                    branch: 'sprint'
+                    branch: 'sprint_1_rel'
             }
         }
         stage('build'){
             steps{
-                sh 'docker image build -t srikanthvelma/SCR:latest .'
+                sh 'docker image build -t srikanthvelma/scr:latest .'
             }
         }
         stage('scan and push'){
             steps{
-                sh 'docker push image srikanthvelma/SCR:latest'
-                sh 'docker scan srikanthvelma/SCR'
+                sh 'docker image push srikanthvelma/scr:latest'
+                sh 'docker scan srikanthvelma/scr'
             }
         }
     }
