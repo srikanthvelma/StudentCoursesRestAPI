@@ -1,11 +1,11 @@
 pipeline{
     agent{ label 'UBUNTU_FLASK' }
-    triggers{ pollSCM('* * * * *') }
+    triggers{ pollSCM('* 23 * * 1-5') }
     stages{
         stage('vcs'){
             steps{
                 git url: 'https://github.com/srikanthvelma/StudentCoursesRestAPI.git',
-                    branch: 'develop'
+                    branch: 'sprint'
             }
         }
         stage('build'){
