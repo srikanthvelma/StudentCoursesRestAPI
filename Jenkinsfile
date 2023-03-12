@@ -15,8 +15,8 @@ pipeline {
         }
         stage('scan and push') {
             steps{
-                sh 'docker image push srikanthvelma/scr:latest'
                 sh 'docker scan srikanthvelma/scr'
+                sh 'docker image push srikanthvelma/scr:latest'
             }
         }
     }
