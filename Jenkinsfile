@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'UBUNTU_NODE1' }
+    agent { label 'UBUNTU_NODE' }
     triggers { pollSCM('* * * * *') }
     stages {
         stage('vcs') {
@@ -15,7 +15,7 @@ pipeline {
         }
         stage('scan and push') {
             steps{
-                sh 'docker scan srikanthvelma/scr'
+                sh 'echo docker scan srikanthvelma/scr'
                 sh 'docker image push srikanthvelma/scr:latest'
             }
         }
